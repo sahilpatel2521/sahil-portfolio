@@ -23,7 +23,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   ...props
 }) => {
   const baseClasses =
-    "group inline-flex items-center justify-center font-mono text-xs uppercase tracking-wider transition-all duration-200 select-none disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-red focus-visible:ring-offset-2 focus-visible:ring-offset-bg-deep";
+    "group inline-flex items-center justify-center font-mono text-xs uppercase tracking-wider transition-all duration-150 active:scale-[0.98] select-none disabled:opacity-50 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-red focus-visible:ring-offset-2 focus-visible:ring-offset-bg-deep";
 
   const variantClasses = {
     primary:

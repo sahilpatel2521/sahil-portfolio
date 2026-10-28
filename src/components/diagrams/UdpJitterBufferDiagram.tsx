@@ -67,8 +67,8 @@ export const UdpJitterBufferDiagram: React.FC<DiagramProps> = ({ className }) =>
         </g>
 
         {/* CONNECTION 1 */}
-        <path d="M 210 180 L 260 180" stroke="#c0c0c0" strokeWidth="1.5" strokeDasharray="3 3" />
-        <circle cx="260" cy="180" r="3" fill="#e10600" />
+        <path d="M 210 180 L 260 180" className="animate-data-flow" stroke="#c0c0c0" strokeWidth="1.5" />
+        <circle cx="260" cy="180" r="3.5" fill="#e10600" className="animate-pulse" />
 
         {/* SECTION 2: ANDROID UDP INGESTION & JITTER BUFFER */}
         <g transform="translate(270, 40)">
@@ -131,8 +131,8 @@ export const UdpJitterBufferDiagram: React.FC<DiagramProps> = ({ className }) =>
         </g>
 
         {/* CONNECTION 2 */}
-        <path d="M 630 180 L 680 180" stroke="#c0c0c0" strokeWidth="1.5" />
-        <circle cx="680" cy="180" r="3" fill="#e10600" />
+        <path d="M 630 180 L 680 180" className="animate-data-flow" stroke="#c0c0c0" strokeWidth="1.5" />
+        <circle cx="680" cy="180" r="3.5" fill="#e10600" className="animate-pulse" />
 
         {/* SECTION 3: VIDEO RENDERING SURFACE */}
         <g transform="translate(700, 40)">

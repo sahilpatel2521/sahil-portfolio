@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TechnicalLabel } from "@/components/ui/TechnicalLabel";
 import { ProjectCard } from "@/components/ui/ProjectCard";
+import { MotionSection } from "@/components/motion/MotionSection";
 import { projects } from "@/data/projects";
 import { ArrowRight, Layers } from "lucide-react";
 
@@ -23,21 +24,22 @@ export const FeaturedProjects: React.FC = () => {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              id={project.id}
-              systemCode={project.systemCode}
-              title={project.title}
-              category={project.category}
-              description={project.overview}
-              metrics={project.metrics.slice(0, 2).map((m) => ({
-                label: m.label,
-                value: m.value,
-              }))}
-              tags={project.techStack.slice(0, 4)}
-              href={`/projects/${project.slug}`}
-            />
+          {projects.map((project, idx) => (
+            <MotionSection key={project.id} delay={idx * 0.08}>
+              <ProjectCard
+                id={project.id}
+                systemCode={project.systemCode}
+                title={project.title}
+                category={project.category}
+                description={project.overview}
+                metrics={project.metrics.slice(0, 2).map((m) => ({
+                  label: m.label,
+                  value: m.value,
+                }))}
+                tags={project.techStack.slice(0, 4)}
+                href={`/projects/${project.slug}`}
+              />
+            </MotionSection>
           ))}
         </div>
 

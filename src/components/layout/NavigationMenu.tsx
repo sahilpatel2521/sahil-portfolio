@@ -24,7 +24,34 @@ const navItems: NavItem[] = [
 
 export const NavigationMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
   const pathname = usePathname();
+
+  // Dynamically observe active homepage sections
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const sectionIds = ["systems", "apps", "approach", "open-source", "experience", "contact"];
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (elements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`/#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-20% 0px -65% 0px" }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [pathname]);
 
   // Close mobile drawer on route change
   useEffect(() => {
@@ -52,7 +79,8 @@ export const NavigationMenu: React.FC = () => {
       >
         <ul className="flex items-center gap-5">
           {navItems.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive =
+              pathname === item.href || (pathname === "/" && activeSection === item.href);
             return (
               <li key={item.code}>
                 <Link

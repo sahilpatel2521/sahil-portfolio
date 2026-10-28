@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { NavigationMenu } from "./NavigationMenu";
+import { ScrollProgressBar } from "./ScrollProgressBar";
 import { Container } from "../ui/Container";
 
 export const SiteHeader: React.FC = () => {
@@ -35,6 +36,9 @@ export const SiteHeader: React.FC = () => {
         {/* Navigation Menu */}
         <NavigationMenu />
       </Container>
+
+      {/* Global Scroll Progress Bar */}
+      <ScrollProgressBar />
     </header>
   );
 };

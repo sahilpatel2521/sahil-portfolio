@@ -75,8 +75,8 @@ export const BleProtocolDiagram: React.FC<DiagramProps> = ({ className }) => {
         </g>
 
         {/* CONNECTION ARROW 1 */}
-        <path d="M 210 180 L 260 180" stroke="#c0c0c0" strokeWidth="1.5" strokeDasharray="3 3" />
-        <circle cx="260" cy="180" r="3" fill="#e10600" />
+        <path d="M 210 180 L 260 180" className="animate-data-flow" stroke="#c0c0c0" strokeWidth="1.5" />
+        <circle cx="260" cy="180" r="3.5" fill="#e10600" className="animate-pulse" />
 
         {/* SECTION 2: UNIFIED BLE ABSTRACTION LAYER */}
         <g transform="translate(270, 40)">
@@ -144,10 +144,11 @@ export const BleProtocolDiagram: React.FC<DiagramProps> = ({ className }) => {
         </g>
 
         {/* CONNECTION ARROW 2 */}
-        <path d="M 630 180 L 680 180" stroke="#c0c0c0" strokeWidth="1.5" />
-        <path d="M 680 140 L 700 140" stroke="#c0c0c0" strokeWidth="1" />
-        <path d="M 680 220 L 700 220" stroke="#c0c0c0" strokeWidth="1" />
+        <path d="M 630 180 L 680 180" className="animate-data-flow" stroke="#c0c0c0" strokeWidth="1.5" />
+        <path d="M 680 140 L 700 140" className="animate-data-flow" stroke="#c0c0c0" strokeWidth="1.2" />
+        <path d="M 680 220 L 700 220" className="animate-data-flow" stroke="#c0c0c0" strokeWidth="1.2" />
         <path d="M 680 140 L 680 220" stroke="#c0c0c0" strokeWidth="1" />
+        <circle cx="680" cy="180" r="3" fill="#e10600" />
 
         {/* SECTION 3: PERIPHERAL HEARING-AID HARDWARE */}
         <g transform="translate(700, 40)">

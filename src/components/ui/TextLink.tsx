@@ -38,7 +38,7 @@ export const TextLink: React.FC<TextLinkProps> = ({
   );
 
   const mergedClassName = cn(
-    "group inline-flex items-center gap-0.5 pb-0.5 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-signal-red",
+    "group inline-flex items-center gap-0.5 pb-0.5 transition-all duration-150 active:translate-y-[0.5px] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-signal-red focus-visible:ring-offset-1 focus-visible:ring-offset-bg-deep",
     variantClasses[variant],
     className
   );
