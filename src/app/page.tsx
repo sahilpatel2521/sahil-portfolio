@@ -6,138 +6,18 @@ import { PrimaryButton } from "@/components/ui/PrimaryButton";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { AppCard } from "@/components/ui/AppCard";
 import { TextLink } from "@/components/ui/TextLink";
+import { HeroSection } from "@/components/hero/HeroSection";
 import {
-  FileText,
   Terminal,
-  Activity,
   Layers,
   ShieldCheck,
-  ArrowRight,
-  ExternalLink,
 } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="space-y-24 sm:space-y-32 py-10 sm:py-16">
-      {/* HERO SECTION HUD */}
-      <section className="relative">
-        <Container size="wide">
-          {/* Top Status Telemetry Strip */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-border-subtle mb-10 text-xs font-mono">
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-signal-red animate-pulse" aria-hidden="true" />
-              <span className="text-silver uppercase tracking-widest">
-                SYSTEM OPERATIONAL // COROUTINES_DISPATCHER_READY
-              </span>
-            </div>
-            <div className="flex items-center gap-4 text-silver-dark">
-              <span>DEVICE_TIER: HIGH_PERF</span>
-              <span>•</span>
-              <span>BLE_VERSION: 5.4</span>
-              <span>•</span>
-              <span>LOCATION: AHMEDABAD, IN</span>
-            </div>
-          </div>
-
-          {/* Hero Main Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div className="lg:col-span-8 space-y-6">
-              <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-charcoal border border-border-subtle">
-                <span className="h-1.5 w-1.5 rounded-full bg-signal-red" />
-                <span className="font-mono text-xs uppercase tracking-widest text-silver">
-                  SAHIL PATEL // SENIOR ANDROID ENGINEER
-                </span>
-              </div>
-
-              <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-primary leading-[1.05]">
-                SIGNAL <span className="text-silver-dark font-light">/</span> SYSTEM
-              </h1>
-
-              <p className="font-display text-lg sm:text-2xl text-silver font-light max-w-3xl leading-snug">
-                Architecting deterministic Android platforms, custom BLE communication protocols,
-                low-latency audio/video pipelines, and on-device ML inference.
-              </p>
-
-              <p className="font-body text-sm sm:text-base text-muted max-w-2xl leading-relaxed">
-                4+ years crafting production-grade systems at WeHear Innovations. Modernized 3
-                codebase generations to Jetpack Compose, co-designed embedded protocols on-site in
-                China, and invented PairHub™ for frictionless multi-device switching.
-              </p>
-
-              {/* Action Buttons */}
-              <div className="pt-4 flex flex-wrap items-center gap-4">
-                <PrimaryButton
-                  href="#systems"
-                  variant="signal"
-                  size="lg"
-                  signalDot
-                  icon={<ArrowRight className="h-4 w-4" />}
-                >
-                  Inspect Systems Matrix
-                </PrimaryButton>
-
-                <PrimaryButton
-                  href="/assets/Sahil_Patel_Senior_Android_Engineer_Resume.pdf"
-                  external
-                  variant="primary"
-                  size="lg"
-                  icon={<FileText className="h-4 w-4 text-silver" />}
-                >
-                  Download Verified Resume
-                </PrimaryButton>
-              </div>
-            </div>
-
-            {/* Quick Metrics HUD Column */}
-            <div className="lg:col-span-4 bg-bg-elevated border border-border-subtle p-6 space-y-6 shadow-elevation">
-              <div className="flex items-center justify-between border-b border-border-subtle pb-3">
-                <span className="font-mono text-xs uppercase tracking-wider text-silver-dark flex items-center gap-1.5">
-                  <Activity className="h-3.5 w-3.5 text-signal-red" />
-                  TELEMETRY_BENCHMARKS
-                </span>
-                <TechnicalLabel variant="neutral" size="xs">
-                  VERIFIED
-                </TechnicalLabel>
-              </div>
-
-              <div className="space-y-4">
-                <div className="border-l-2 border-border-medium pl-3 py-0.5">
-                  <div className="font-display text-2xl font-bold text-primary">-70%</div>
-                  <div className="font-mono text-xs text-silver-dark uppercase tracking-wider">
-                    BLE Scan & Connect Latency (NUConnect)
-                  </div>
-                </div>
-
-                <div className="border-l-2 border-border-medium pl-3 py-0.5">
-                  <div className="font-display text-2xl font-bold text-primary">~99%</div>
-                  <div className="font-mono text-xs text-silver-dark uppercase tracking-wider">
-                    Smooth UDP Frame Delivery (NUScope)
-                  </div>
-                </div>
-
-                <div className="border-l-2 border-border-medium pl-3 py-0.5">
-                  <div className="font-display text-2xl font-bold text-primary">3,000+</div>
-                  <div className="font-mono text-xs text-silver-dark uppercase tracking-wider">
-                    Live Audio Stream Attendees (BNI Hawaii)
-                  </div>
-                </div>
-
-                <div className="border-l-2 border-signal-red-border pl-3 py-0.5">
-                  <div className="font-display text-2xl font-bold text-primary">~35%</div>
-                  <div className="font-mono text-xs text-silver-dark uppercase tracking-wider">
-                    Cold Start Time Reduction (Baseline Profiles)
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-border-subtle flex items-center justify-between font-mono text-[11px] text-silver-dark">
-                <span>STABILITY INDEX</span>
-                <span className="text-emerald-400 font-semibold">99.9% CRASH-FREE</span>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+    <div className="space-y-24 sm:space-y-32">
+      {/* CINEMATIC HERO SECTION */}
+      <HeroSection />
 
       {/* 01. CORE ENGINEERING SYSTEMS */}
       <section id="systems" className="scroll-mt-24">

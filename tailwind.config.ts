@@ -57,6 +57,20 @@ const config: Config = {
         technical: "0.12em",
         display: "-0.03em",
       },
+      keyframes: {
+        "spin-slow": {
+          "0%": { transform: "rotateX(68deg) rotateY(-18deg) rotateZ(0deg)" },
+          "100%": { transform: "rotateX(68deg) rotateY(-18deg) rotateZ(360deg)" },
+        },
+        "spin-reverse-medium": {
+          "0%": { transform: "rotateX(42deg) rotateY(38deg) rotateZ(0deg)" },
+          "100%": { transform: "rotateX(42deg) rotateY(38deg) rotateZ(-360deg)" },
+        },
+      },
+      animation: {
+        "spin-slow": "spin-slow 48s linear infinite",
+        "spin-reverse-medium": "spin-reverse-medium 36s linear infinite",
+      },
     },
   },
   plugins: [],
