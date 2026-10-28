@@ -14,8 +14,8 @@ export interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "Impact", code: "01", href: "/#impact" },
-  { label: "Systems", code: "02", href: "/#systems" },
+  { label: "Systems", code: "01", href: "/#systems" },
+  { label: "Apps", code: "02", href: "/#apps" },
   { label: "Approach", code: "03", href: "/#approach" },
   { label: "Open Source", code: "04", href: "/#open-source" },
   { label: "Experience", code: "05", href: "/#experience" },
