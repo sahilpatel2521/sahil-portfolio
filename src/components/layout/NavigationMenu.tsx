@@ -14,11 +14,12 @@ export interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "Systems", code: "01", href: "/#systems" },
-  { label: "Apps", code: "02", href: "/#apps" },
-  { label: "Open Source", code: "03", href: "/#open-source" },
-  { label: "Experience", code: "04", href: "/resume" },
-  { label: "Coordinates", code: "05", href: "/#contact" },
+  { label: "Impact", code: "01", href: "/#impact" },
+  { label: "Systems", code: "02", href: "/#systems" },
+  { label: "Approach", code: "03", href: "/#approach" },
+  { label: "Open Source", code: "04", href: "/#open-source" },
+  { label: "Experience", code: "05", href: "/#experience" },
+  { label: "Contact", code: "06", href: "/#contact" },
 ];
 
 export const NavigationMenu: React.FC = () => {
