@@ -8,7 +8,7 @@ import { Briefcase, Calendar, MapPin, CheckCircle2 } from "lucide-react";
 
 export const ExperienceSection: React.FC = () => {
   return (
-    <section id="experience" className="scroll-mt-24">
+    <section id="experience" className="scroll-mt-24 sm:scroll-mt-28">
       <Container size="wide">
         <SectionHeading
           systemCode="// 05. PROFESSIONAL CAREER"

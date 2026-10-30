@@ -7,10 +7,10 @@ import { GraduationCap, Calendar, MapPin } from "lucide-react";
 
 export const EducationSection: React.FC = () => {
   return (
-    <section id="education" className="scroll-mt-24">
+    <section id="education" className="scroll-mt-24 sm:scroll-mt-28">
       <Container size="wide">
         <SectionHeading
-          systemCode="// 06. ACADEMIC CREDENTIALS"
+          systemCode="// CREDENTIALS // ACADEMIC FOUNDATION"
           title="Education"
           subtitle="Formal foundation in Information Technology, computer networking, systems design, and software architecture."
         />

@@ -33,6 +33,7 @@ const config: Config = {
           "red-border": "var(--signal-red-border)",
         },
         primary: "var(--text-primary)",
+        secondary: "var(--text-secondary)",
         muted: "var(--text-muted)",
         dim: "var(--text-dim)",
         border: {

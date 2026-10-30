@@ -9,7 +9,7 @@ import { GitPullRequest, Github } from "lucide-react";
 
 export const OpenSourceSection: React.FC = () => {
   return (
-    <section id="open-source" className="scroll-mt-24">
+    <section id="open-source" className="scroll-mt-24 sm:scroll-mt-28">
       <Container size="wide">
         <SectionHeading
           systemCode="// 04. UPSTREAM CONTRIBUTIONS"

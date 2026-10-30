@@ -58,6 +58,17 @@ export const NavigationMenu: React.FC = () => {
     setIsOpen(false);
   }, [pathname]);
 
+  // Handle escape key to close mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
   // Lock scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {

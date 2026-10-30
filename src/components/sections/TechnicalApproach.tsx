@@ -26,7 +26,7 @@ export const TechnicalApproach: React.FC = () => {
     engineeringStages.find((s) => s.id === activeStageId) ?? engineeringStages[0];
 
   return (
-    <section id="approach" className="scroll-mt-24 space-y-16">
+    <section id="approach" className="scroll-mt-24 sm:scroll-mt-28 space-y-16">
       <Container size="wide">
         {/* Section Heading */}
         <SectionHeading

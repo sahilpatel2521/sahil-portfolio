@@ -68,6 +68,20 @@ export const tokens = {
     normal: "250ms cubic-bezier(0.16, 1, 0.3, 1)",
     slow: "400ms cubic-bezier(0.16, 1, 0.3, 1)",
   },
+  layout: {
+    headerHeight: "4rem", // 64px
+    maxWideWidth: "1440px",
+    maxDefaultWidth: "80rem", // 1280px (7xl)
+    maxNarrowWidth: "56rem", // 896px (4xl)
+    scrollMarginTop: "7rem", // 112px (scroll-mt-28)
+  },
+  zIndex: {
+    grid: 0,
+    main: 10,
+    header: 40,
+    modal: 50,
+    skipLink: 50,
+  },
 } as const;
 
 export type DesignTokens = typeof tokens;

@@ -102,7 +102,9 @@ export default function RootLayout({
 
           <SiteHeader />
 
-          <main className="relative z-10 flex-1">{children}</main>
+          <main id="main-content" tabIndex={-1} className="relative z-10 flex-1 outline-none">
+            {children}
+          </main>
 
           <SiteFooter />
         </div>

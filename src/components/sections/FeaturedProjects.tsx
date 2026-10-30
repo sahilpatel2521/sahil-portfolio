@@ -10,10 +10,10 @@ import { ArrowRight, Layers } from "lucide-react";
 
 export const FeaturedProjects: React.FC = () => {
   return (
-    <section id="systems" className="scroll-mt-24">
+    <section id="systems" className="scroll-mt-24 sm:scroll-mt-28">
       <Container size="wide">
         <SectionHeading
-          systemCode="// 02. CORE ARCHITECTURE"
+          systemCode="// 01. CORE ARCHITECTURE"
           title="Featured Case Studies"
           subtitle="Deep-dive architectural case studies covering smart hearing-aid BLE protocols, real-time translation pipelines, UDP medical video streaming, and digital audio DSP."
           badge={

@@ -12,10 +12,10 @@ import { ArrowRight, ExternalLink, Github, Smartphone, Eye, Sparkles, QrCode } f
 
 export const AppGallery: React.FC = () => {
   return (
-    <section id="apps" className="scroll-mt-24 space-y-16">
+    <section id="apps" className="scroll-mt-24 sm:scroll-mt-28 space-y-16">
       <Container size="wide">
         <SectionHeading
-          systemCode="// 02. PUBLIC SOFTWARE RELEASES"
+          systemCode="// 02. RELEASED APPLICATIONS & PRODUCTS"
           title="Released Applications Gallery"
           subtitle="Direct-to-consumer and open-source Android applications engineered with clean architecture, on-device AI, and accessibility services."
           badge={

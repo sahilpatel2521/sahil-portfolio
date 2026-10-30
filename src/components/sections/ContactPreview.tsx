@@ -6,7 +6,7 @@ import { Mail, Linkedin, Github, FileText, Phone, MapPin, Radio } from "lucide-r
 
 export const ContactPreview: React.FC = () => {
   return (
-    <section id="contact" className="scroll-mt-24">
+    <section id="contact" className="scroll-mt-24 sm:scroll-mt-28">
       <Container size="wide">
         <div className="bg-bg-elevated border border-border-subtle p-8 sm:p-12 relative overflow-hidden shadow-elevation">
           {/* Subtle background radar ring element */}
@@ -21,7 +21,7 @@ export const ContactPreview: React.FC = () => {
             </div>
 
             <SectionHeading
-              systemCode="// 07. DIRECT COORDINATES"
+              systemCode="// 06. DIRECT COORDINATES"
               title="Connect & Collaborate"
               subtitle="Available for Senior Android Engineer roles, technical platform architecture, Bluetooth/BLE hardware integration, and low-latency audio/video consulting."
             />

@@ -7,6 +7,14 @@ import { Container } from "../ui/Container";
 export const SiteHeader: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 w-full bg-bg-deep/90 backdrop-blur-md border-b border-border-subtle transition-all">
+      {/* Skip to Main Content accessible link for keyboard & screen reader users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-charcoal focus:border focus:border-signal-red focus:text-primary focus:font-mono focus:text-xs focus:shadow-elevation focus:outline-none focus:ring-1 focus:ring-signal-red transition-all"
+      >
+        Skip to main content
+      </a>
+
       <Container size="wide" className="h-16 flex items-center justify-between">
         {/* Brand & Telemetry */}
         <Link

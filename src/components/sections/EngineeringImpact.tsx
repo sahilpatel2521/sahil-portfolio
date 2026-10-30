@@ -96,10 +96,10 @@ const MetricCounter: React.FC<CounterProps> = ({ metric }) => {
 
 export const EngineeringImpact: React.FC = () => {
   return (
-    <section id="impact" className="scroll-mt-24">
+    <section id="impact" className="scroll-mt-24 sm:scroll-mt-28">
       <Container size="wide">
         <SectionHeading
-          systemCode="// 01. QUANTIFIABLE RESULTS"
+          systemCode="// BENCHMARKS // QUANTIFIABLE RESULTS"
           title="Engineering Impact"
           subtitle="Empirical performance benchmarks and architectural gains from production deployments, preserving original measurement constraints."
           badge={
