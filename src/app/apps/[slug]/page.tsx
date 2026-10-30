@@ -19,6 +19,7 @@ import {
   Smartphone,
   CheckCircle2,
   AlertCircle,
+  QrCode,
 } from "lucide-react";
 
 interface AppPageProps {
@@ -77,15 +78,19 @@ export default async function AppDetailPage({ params }: AppPageProps) {
           {/* App Header Row */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-border-subtle">
             <div className="flex items-start gap-4 sm:gap-6">
-              <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-2xl overflow-hidden border border-border-medium bg-charcoal shrink-0 shadow-elevation">
-                <Image
-                  src={app.iconUrl}
-                  alt={`${app.name} icon`}
-                  fill
-                  sizes="80px"
-                  className="object-cover"
-                  priority
-                />
+              <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-2xl overflow-hidden border border-border-medium bg-charcoal shrink-0 shadow-elevation flex items-center justify-center">
+                {app.id === "reachme" ? (
+                  <QrCode className="h-9 w-9 sm:h-11 sm:w-11 text-signal-red" />
+                ) : (
+                  <Image
+                    src={app.iconUrl}
+                    alt={`${app.name} icon`}
+                    fill
+                    sizes="80px"
+                    className="object-cover"
+                    priority
+                  />
+                )}
               </div>
 
               <div className="space-y-1.5">

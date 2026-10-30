@@ -21,16 +21,32 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
   return (
     <div
       className={cn(
-        "relative mx-auto rounded-[36px] p-2.5 bg-gradient-to-b from-[#3a3a3a] via-[#202020] to-[#141414] border border-border-medium shadow-2xl select-none",
+        "relative mx-auto rounded-[38px] p-2.5 bg-gradient-to-b from-[#3a3a3a] via-[#222222] to-[#121212] border border-silver/30 shadow-[0_20px_50px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.12)] select-none group transition-all duration-300 hover:border-silver/60 hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_20px_rgba(192,192,192,0.08)]",
         "w-[260px] sm:w-[280px] aspect-[9/18]",
         className
       )}
     >
+      {/* Hardware Volume Buttons (Left) */}
+      <div
+        className="absolute -left-[3px] top-20 w-[3px] h-9 bg-silver-dark/60 rounded-l-sm"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute -left-[3px] top-32 w-[3px] h-9 bg-silver-dark/60 rounded-l-sm"
+        aria-hidden="true"
+      />
+
+      {/* Hardware Power Button (Right) */}
+      <div
+        className="absolute -right-[3px] top-24 w-[3px] h-12 bg-silver-dark/60 rounded-r-sm"
+        aria-hidden="true"
+      />
+
       {/* Outer Phone Bezel Rim */}
-      <div className="relative w-full h-full rounded-[28px] bg-bg-deep overflow-hidden border border-black/80 flex flex-col justify-between">
+      <div className="relative w-full h-full rounded-[28px] bg-bg-deep overflow-hidden border border-black/90 flex flex-col justify-between">
         {/* Dynamic Island / Speaker Pill */}
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 z-30 h-4 w-20 bg-black rounded-full flex items-center justify-end px-2">
-          <div className="h-1.5 w-1.5 rounded-full bg-signal-red/80" />
+        <div className="absolute top-2 left-1/2 -translate-x-1/2 z-30 h-4 w-20 bg-black rounded-full flex items-center justify-end px-2 border border-white/5">
+          <div className="h-1.5 w-1.5 rounded-full bg-signal-red/90 animate-pulse" />
         </div>
 
         {/* Top Status Bar */}

@@ -40,7 +40,7 @@ export default function AppsIndexPage() {
       </Container>
 
       {/* Editorial App Gallery */}
-      <AppGallery />
+      <AppGallery hideHeading />
 
       {/* Verification Notice */}
       <Container size="wide">

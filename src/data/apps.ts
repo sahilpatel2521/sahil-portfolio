@@ -162,7 +162,7 @@ export const releasedApps: AppRelease[] = [
     category: "Full-Stack Android & Real-Time Communication",
     platform: "Android Prototype",
     status: "prototype",
-    statusLabel: "Architectural Prototype",
+    statusLabel: "System Prototype // R&D",
     iconUrl: "/images/apps/styledrobe/icon.webp", // Fallback to styledrobe icon
     screenshots: [],
     overview:
