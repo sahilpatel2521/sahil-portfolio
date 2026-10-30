@@ -126,7 +126,7 @@ export const NavigationMenu: React.FC = () => {
     <>
       {/* Desktop Navigation */}
       <nav
-        className="hidden md:flex items-center gap-6"
+        className="hidden lg:flex items-center gap-6"
         aria-label="Main Navigation"
       >
         <ul className="flex items-center gap-5">
@@ -174,8 +174,8 @@ export const NavigationMenu: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Toggle Button */}
-      <div className="flex items-center gap-2 md:hidden">
+      {/* Mobile & Tablet Toggle Button */}
+      <div className="flex items-center gap-2 lg:hidden">
         <button
           ref={toggleButtonRef}
           type="button"

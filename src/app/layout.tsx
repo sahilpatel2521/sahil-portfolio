@@ -93,7 +93,7 @@ export default function RootLayout({
       id="top"
     >
       <body className="min-h-screen bg-bg-deep text-primary font-body antialiased selection:bg-signal-red-muted selection:text-primary">
-        <div className="relative flex min-h-screen flex-col">
+        <div className="relative flex min-h-screen flex-col overflow-x-hidden">
           {/* Subtle background grid pattern */}
           <div
             className="pointer-events-none fixed inset-0 z-0 engineering-grid opacity-40"

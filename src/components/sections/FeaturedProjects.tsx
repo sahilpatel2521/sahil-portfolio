@@ -246,7 +246,7 @@ export const FeaturedProjects: React.FC = () => {
             </div>
 
             {/* Right Column: Live Architectural Schematic Diagram */}
-            <div className="lg:col-span-7 flex flex-col justify-between bg-bg-deep p-4 sm:p-6">
+            <div className="lg:col-span-7 flex flex-col justify-between bg-bg-deep p-4 sm:p-6 min-w-0 max-w-full overflow-hidden">
               <div className="space-y-4">
                 {/* Schematic Title HUD */}
                 <div className="flex items-center justify-between font-mono text-[11px] text-silver-dark pb-3 border-b border-border-subtle tracking-wider">
@@ -262,7 +262,7 @@ export const FeaturedProjects: React.FC = () => {
                 </div>
 
                 {/* Embedded Live SVG Diagram */}
-                <div className="relative">
+                <div className="relative overflow-x-auto max-w-full">
                   <DiagramRenderer
                     type={activeProject.architecture.diagramType}
                     className="border-0 bg-transparent p-0"
