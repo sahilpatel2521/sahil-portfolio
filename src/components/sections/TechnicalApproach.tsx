@@ -25,6 +25,25 @@ export const TechnicalApproach: React.FC = () => {
   const activeStage =
     engineeringStages.find((s) => s.id === activeStageId) ?? engineeringStages[0];
 
+  const handleStageKeyDown = (e: React.KeyboardEvent, index: number) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setActiveStageId(engineeringStages[index].id);
+    } else if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+      e.preventDefault();
+      const nextIndex = (index + 1) % engineeringStages.length;
+      const nextStage = engineeringStages[nextIndex];
+      setActiveStageId(nextStage.id);
+      document.getElementById(`stage-tab-${nextStage.id}`)?.focus();
+    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      const prevIndex = (index - 1 + engineeringStages.length) % engineeringStages.length;
+      const prevStage = engineeringStages[prevIndex];
+      setActiveStageId(prevStage.id);
+      document.getElementById(`stage-tab-${prevStage.id}`)?.focus();
+    }
+  };
+
   return (
     <section id="approach" className="scroll-mt-24 sm:scroll-mt-28 space-y-16">
       <Container size="wide">
@@ -64,7 +83,7 @@ export const TechnicalApproach: React.FC = () => {
 
             {/* Stage Selector Buttons */}
             <div className="space-y-3" role="tablist" aria-label="Engineering Process Stages">
-              {engineeringStages.map((stage) => {
+              {engineeringStages.map((stage, idx) => {
                 const isActive = stage.id === activeStageId;
 
                 return (
@@ -75,7 +94,9 @@ export const TechnicalApproach: React.FC = () => {
                     id={`stage-tab-${stage.id}`}
                     aria-selected={isActive}
                     aria-controls={`stage-panel-${stage.id}`}
+                    tabIndex={isActive ? 0 : -1}
                     onClick={() => setActiveStageId(stage.id)}
+                    onKeyDown={(e) => handleStageKeyDown(e, idx)}
                     className={cn(
                       "w-full text-left p-4 sm:p-5 transition-all duration-200 border relative block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-red active:scale-[0.99]",
                       isActive
@@ -153,9 +174,16 @@ export const TechnicalApproach: React.FC = () => {
               id={`stage-panel-${activeStage.id}`}
               role="tabpanel"
               aria-labelledby={`stage-tab-${activeStage.id}`}
-              className="bg-bg-elevated border border-border-subtle p-6 sm:p-8 space-y-6 shadow-elevation"
+              className="bg-bg-elevated border border-border-subtle p-6 sm:p-8 shadow-elevation overflow-hidden"
             >
-              {/* Telemetry Header */}
+              <motion.div
+                key={activeStage.id}
+                initial={{ opacity: shouldReduceMotion ? 1 : 0.85 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: shouldReduceMotion ? 0 : 0.2, ease: "easeOut" }}
+                className="space-y-6"
+              >
+                {/* Telemetry Header */}
               <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-border-subtle">
                 <div className="space-y-1">
                   <span className="font-mono text-xs uppercase tracking-widest text-silver-dark flex items-center gap-2">
@@ -214,8 +242,9 @@ export const TechnicalApproach: React.FC = () => {
                   </Link>
                 )}
               </div>
-            </div>
+            </motion.div>
           </div>
+        </div>
         </div>
 
         {/* Foundational Architecture Pillars Grid */}

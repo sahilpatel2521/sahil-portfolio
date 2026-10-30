@@ -29,10 +29,22 @@ export const FeaturedProjects: React.FC = () => {
   const activeProject =
     projects.find((p) => p.id === activeProjectId) ?? projects[0];
 
-  const handleKeyDown = (e: React.KeyboardEvent, id: string) => {
+  const handleKeyDown = (e: React.KeyboardEvent, id: string, index: number) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       setActiveProjectId(id);
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      const nextIndex = (index + 1) % projects.length;
+      const nextProj = projects[nextIndex];
+      setActiveProjectId(nextProj.id);
+      document.getElementById(`tab-${nextProj.id}`)?.focus();
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      const prevIndex = (index - 1 + projects.length) % projects.length;
+      const prevProj = projects[prevIndex];
+      setActiveProjectId(prevProj.id);
+      document.getElementById(`tab-${prevProj.id}`)?.focus();
     }
   };
 
@@ -68,7 +80,7 @@ export const FeaturedProjects: React.FC = () => {
                 aria-controls={`panel-${proj.id}`}
                 tabIndex={isActive ? 0 : -1}
                 onClick={() => setActiveProjectId(proj.id)}
-                onKeyDown={(e) => handleKeyDown(e, proj.id)}
+                onKeyDown={(e) => handleKeyDown(e, proj.id, idx)}
                 className={cn(
                   "text-left p-3 sm:p-4 border transition-all duration-150 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-red active:scale-[0.98]",
                   isActive
@@ -116,9 +128,15 @@ export const FeaturedProjects: React.FC = () => {
           id={`panel-${activeProject.id}`}
           role="tabpanel"
           aria-labelledby={`tab-${activeProject.id}`}
-          className="bg-bg-elevated border border-border-subtle shadow-elevation"
+          className="bg-bg-elevated border border-border-subtle shadow-elevation overflow-hidden"
         >
-          {/* Header Telemetry Row */}
+          <motion.div
+            key={activeProject.id}
+            initial={{ opacity: shouldReduceMotion ? 1 : 0.85 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.2, ease: "easeOut" }}
+          >
+            {/* Header Telemetry Row */}
           <div className="p-5 sm:p-6 border-b border-border-subtle flex flex-wrap items-center justify-between gap-4 bg-charcoal/30">
             <div className="flex flex-wrap items-center gap-3">
               <span className="font-mono text-xs uppercase tracking-widest text-silver-dark flex items-center gap-2">
@@ -264,7 +282,8 @@ export const FeaturedProjects: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
+      </div>
 
         {/* Secondary System Quick-Inspection Grid */}
         <div className="space-y-4 pt-4">
