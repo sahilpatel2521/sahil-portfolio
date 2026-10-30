@@ -85,20 +85,19 @@ export const HeroHeadline: React.FC = () => {
         initial={mounted && !shouldReduceMotion ? "hidden" : "visible"}
         animate="visible"
         variants={fadeUpVariants}
-        className="font-body text-base sm:text-xl text-silver-dark font-light max-w-2xl leading-relaxed"
+        className="font-body text-base sm:text-lg lg:text-xl text-silver-dark font-light max-w-2xl leading-relaxed"
       >
         I build Android experiences across connected devices, real-time systems, audio, and on-device AI.
       </motion.p>
 
-      {/* Secondary Bio Note */}
+      {/* Architectural Focus Thesis */}
       <motion.p
         initial={mounted && !shouldReduceMotion ? "hidden" : "visible"}
         animate="visible"
         variants={fadeUpVariants}
         className="font-body text-xs sm:text-sm text-muted max-w-xl leading-relaxed"
       >
-        Senior Android Engineer at WeHear Innovations. Modernized 3 codebase generations to Jetpack Compose,
-        co-designed firmware protocols in China, and invented PairHub™ for multi-device switching.
+        Specializing in BLE GATT peripheral orchestration, sliding-window jitter buffers for low-latency streaming, and lifecycle-resilient Jetpack Compose architecture.
       </motion.p>
 
       {/* Primary & Secondary Call to Actions + Resume Access */}
@@ -106,7 +105,7 @@ export const HeroHeadline: React.FC = () => {
         initial={mounted && !shouldReduceMotion ? "hidden" : "visible"}
         animate="visible"
         variants={fadeUpVariants}
-        className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4"
+        className="pt-2 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4"
       >
         {/* Primary CTA */}
         <PrimaryButton
@@ -114,6 +113,7 @@ export const HeroHeadline: React.FC = () => {
           variant="signal"
           size="lg"
           signalDot
+          className="w-full sm:w-auto"
           icon={<ArrowRight className="h-4 w-4" />}
         >
           Explore projects
@@ -124,6 +124,7 @@ export const HeroHeadline: React.FC = () => {
           href="#apps"
           variant="primary"
           size="lg"
+          className="w-full sm:w-auto"
           icon={<Smartphone className="h-4 w-4 text-silver" />}
         >
           View released apps
@@ -135,6 +136,7 @@ export const HeroHeadline: React.FC = () => {
           external
           variant="outline"
           size="lg"
+          className="w-full sm:w-auto"
           icon={<FileText className="h-4 w-4 text-silver" />}
         >
           Resume (PDF)

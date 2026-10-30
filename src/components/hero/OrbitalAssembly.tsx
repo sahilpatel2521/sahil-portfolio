@@ -42,7 +42,7 @@ export const OrbitalAssembly: React.FC<OrbitalAssemblyProps> = ({ className }) =
       ref={containerRef}
       className={cn(
         "relative flex items-center justify-center select-none pointer-events-none",
-        "w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] lg:w-[440px] lg:h-[440px]",
+        "w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px]",
         className
       )}
       style={{ perspective: "1000px" }}

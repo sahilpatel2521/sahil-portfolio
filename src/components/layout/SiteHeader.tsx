@@ -6,7 +6,7 @@ import { Container } from "../ui/Container";
 
 export const SiteHeader: React.FC = () => {
   return (
-    <header className="sticky top-0 z-40 w-full bg-bg-deep/90 backdrop-blur-md border-b border-border-subtle transition-all">
+    <header className="sticky top-0 z-40 w-full bg-[#171717]/90 backdrop-blur-md border-b border-border-subtle transition-all">
       {/* Skip to Main Content accessible link for keyboard & screen reader users */}
       <a
         href="#main-content"

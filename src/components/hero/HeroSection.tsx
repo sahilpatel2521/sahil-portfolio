@@ -19,34 +19,41 @@ export const HeroSection: React.FC = () => {
 
       <Container size="wide" className="relative z-10 w-full flex-1 flex flex-col justify-between">
         {/* Top Telemetry Strip */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-border-subtle text-xs font-mono text-silver-dark mb-8 lg:mb-12">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-signal-red animate-pulse" aria-hidden="true" />
-            <span className="text-silver tracking-widest uppercase">
-              STATUS: TELEMETRY_ONLINE // DISPATCHER_ACTIVE
+        <div className="flex items-center justify-between gap-3 pb-4 border-b border-border-subtle text-[11px] sm:text-xs font-mono text-silver-dark mb-6 lg:mb-10">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="h-1.5 w-1.5 rounded-full bg-signal-red shrink-0 animate-pulse" aria-hidden="true" />
+            <span className="text-silver tracking-wider uppercase hidden sm:inline">
+              SYS_DISPATCHER // TELEMETRY_ONLINE
+            </span>
+            <span className="text-silver tracking-wider uppercase sm:hidden inline text-[10px]">
+              SYS_ONLINE // DISPATCHER
             </span>
           </div>
 
-          <div className="hidden sm:flex items-center gap-4 text-[11px] tracking-wider text-silver-dark">
+          <div className="hidden md:flex items-center gap-3 text-[10px] tracking-widest text-silver-muted shrink-0">
             <span>KOTLIN 2.1</span>
-            <span>•</span>
+            <span>{"//"}</span>
             <span>JETPACK COMPOSE</span>
-            <span>•</span>
+            <span>{"//"}</span>
             <span>BLE GATT ENGINE</span>
-            <span>•</span>
+            <span>{"//"}</span>
             <span>AHMEDABAD, IN</span>
+          </div>
+
+          <div className="flex md:hidden items-center gap-2 text-[10px] font-mono text-silver-dark tracking-wider shrink-0">
+            <span>KOTLIN 2.1</span>
           </div>
         </div>
 
         {/* Main Hero Row: Headline + Dimensional Metallic Object */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center my-auto">
           {/* Headline Column */}
           <div className="lg:col-span-7 xl:col-span-7">
             <HeroHeadline />
           </div>
 
           {/* Signature 3D Visual Column */}
-          <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-center justify-center relative">
+          <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-center justify-center relative mt-4 lg:mt-0">
             {/* Visual Frame HUD Accents */}
             <div className="relative p-2 sm:p-4">
               {/* Corner HUD Markers */}
@@ -59,7 +66,7 @@ export const HeroSection: React.FC = () => {
               <OrbitalAssembly />
 
               {/* Orbital Telemetry Caption */}
-              <div className="mt-4 flex items-center justify-between font-mono text-[10px] text-silver-dark tracking-widest px-2 uppercase">
+              <div className="mt-3 flex items-center justify-between font-mono text-[9px] sm:text-[10px] text-silver-dark tracking-widest px-2 uppercase">
                 <span>GYRO_GIMBAL // V-04</span>
                 <span className="flex items-center gap-1 text-silver">
                   <span className="h-1 w-1 bg-signal-red rounded-full" />
@@ -71,13 +78,16 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* Bottom Benchmarks Strip + Scroll Indicator */}
-        <div className="mt-12 lg:mt-16 pt-6 border-t border-border-subtle grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        <div className="mt-8 lg:mt-12 pt-6 border-t border-border-subtle grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
           {/* Verified Engineering Benchmarks */}
           <div className="md:col-span-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="border-l border-border-medium pl-3">
               <div className="font-display text-xl sm:text-2xl font-bold text-primary">-70%</div>
               <div className="font-mono text-[10px] uppercase tracking-wider text-silver-dark">
                 BLE Discovery Latency
+              </div>
+              <div className="font-mono text-[9px] text-silver-muted tracking-wider">
+                {"//"} NUCONNECT
               </div>
             </div>
 
@@ -86,6 +96,9 @@ export const HeroSection: React.FC = () => {
               <div className="font-mono text-[10px] uppercase tracking-wider text-silver-dark">
                 UDP Smooth Delivery
               </div>
+              <div className="font-mono text-[9px] text-silver-muted tracking-wider">
+                {"//"} NUSCOPE
+              </div>
             </div>
 
             <div className="border-l border-border-medium pl-3">
@@ -93,12 +106,18 @@ export const HeroSection: React.FC = () => {
               <div className="font-mono text-[10px] uppercase tracking-wider text-silver-dark">
                 Live Audio Attendees
               </div>
+              <div className="font-mono text-[9px] text-silver-muted tracking-wider">
+                {"//"} WECONVERSE
+              </div>
             </div>
 
             <div className="border-l border-signal-red-border pl-3">
               <div className="font-display text-xl sm:text-2xl font-bold text-primary">~35%</div>
               <div className="font-mono text-[10px] uppercase tracking-wider text-silver-dark">
                 Cold Start Reduction
+              </div>
+              <div className="font-mono text-[9px] text-silver-muted tracking-wider">
+                {"//"} BASELINE PROFILES
               </div>
             </div>
           </div>

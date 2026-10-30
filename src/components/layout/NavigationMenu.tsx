@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, FileText } from "lucide-react";
@@ -23,9 +24,16 @@ const navItems: NavItem[] = [
 ];
 
 export const NavigationMenu: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const pathname = usePathname();
+  const toggleButtonRef = React.useRef<HTMLButtonElement>(null);
+  const drawerRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Dynamically observe active homepage sections
   useEffect(() => {
@@ -58,13 +66,46 @@ export const NavigationMenu: React.FC = () => {
     setIsOpen(false);
   }, [pathname]);
 
-  // Handle escape key to close mobile menu
+  // Handle escape key and focus trapping for mobile menu
   useEffect(() => {
+    if (!isOpen) return;
+
+    // Focus first focusable item in drawer
+    const focusables = drawerRef.current?.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusables && focusables.length > 0) {
+      focusables[0].focus();
+    }
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+      if (e.key === "Escape") {
         setIsOpen(false);
+        toggleButtonRef.current?.focus();
+        return;
+      }
+
+      if (e.key === "Tab" && drawerRef.current) {
+        const items = Array.from(
+          drawerRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          )
+        );
+        if (items.length === 0) return;
+
+        const first = items[0];
+        const last = items[items.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
@@ -136,6 +177,7 @@ export const NavigationMenu: React.FC = () => {
       {/* Mobile Toggle Button */}
       <div className="flex items-center gap-2 md:hidden">
         <button
+          ref={toggleButtonRef}
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 text-silver hover:text-primary bg-charcoal border border-border-subtle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-red"
@@ -147,59 +189,66 @@ export const NavigationMenu: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Drawer Overlay */}
-      {isOpen && (
-        <div
-          id="mobile-navigation"
-          className="fixed inset-0 top-[65px] z-50 bg-bg-deep/98 backdrop-blur-md border-t border-border-subtle p-6 flex flex-col justify-between md:hidden"
-        >
-          <div className="space-y-6">
-            <div className="font-mono text-xs uppercase text-silver-dark tracking-widest pb-3 border-b border-border-subtle flex items-center justify-between">
-              <span>System Navigation</span>
-              <span className="flex items-center gap-1.5 text-signal-red">
-                <span className="h-1.5 w-1.5 rounded-full bg-signal-red animate-pulse" />
-                ONLINE
-              </span>
+      {/* Mobile Drawer Overlay via Portal to break out of containing blocks */}
+      {mounted &&
+        isOpen &&
+        createPortal(
+          <div
+            ref={drawerRef}
+            id="mobile-navigation"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile Navigation"
+            className="fixed inset-x-0 bottom-0 top-16 z-50 bg-[#171717] border-t border-border-subtle p-6 flex flex-col justify-between md:hidden overflow-y-auto"
+          >
+            <div className="space-y-6">
+              <div className="font-mono text-xs uppercase text-silver-dark tracking-widest pb-3 border-b border-border-subtle flex items-center justify-between">
+                <span>System Navigation</span>
+                <span className="flex items-center gap-1.5 text-signal-red">
+                  <span className="h-1.5 w-1.5 rounded-full bg-signal-red animate-pulse" />
+                  ONLINE
+                </span>
+              </div>
+
+              <ul className="space-y-4">
+                {navItems.map((item) => (
+                  <li key={item.code}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center justify-between py-2 text-base font-display text-primary hover:text-silver border-b border-border-subtle"
+                    >
+                      <span className="flex items-center gap-3">
+                        <span className="font-mono text-xs text-signal-red">
+                          {"//"}{item.code}
+                        </span>
+                        <span>{item.label}</span>
+                      </span>
+                      <span className="font-mono text-xs text-silver-dark">→</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <ul className="space-y-4">
-              {navItems.map((item) => (
-                <li key={item.code}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-between py-2 text-base font-display text-primary hover:text-silver border-b border-border-subtle"
-                  >
-                    <span className="flex items-center gap-3">
-                      <span className="font-mono text-xs text-signal-red">
-                        {"//"}{item.code}
-                      </span>
-                      <span>{item.label}</span>
-                    </span>
-                    <span className="font-mono text-xs text-silver-dark">→</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="pt-6 border-t border-border-subtle space-y-3">
-            <PrimaryButton
-              href="/assets/Sahil_Patel_Senior_Android_Engineer_Resume.pdf"
-              external
-              size="md"
-              variant="signal"
-              signalDot
-              className="w-full"
-            >
-              Download Verified Resume (PDF)
-            </PrimaryButton>
-            <p className="font-mono text-[10px] text-center text-silver-dark uppercase tracking-wider">
-              Ahmedabad, IN // Senior Android Engineer
-            </p>
-          </div>
-        </div>
-      )}
+            <div className="pt-6 border-t border-border-subtle space-y-3">
+              <PrimaryButton
+                href="/assets/Sahil_Patel_Senior_Android_Engineer_Resume.pdf"
+                external
+                size="md"
+                variant="signal"
+                signalDot
+                className="w-full"
+              >
+                Download Verified Resume (PDF)
+              </PrimaryButton>
+              <p className="font-mono text-[10px] text-center text-silver-dark uppercase tracking-wider">
+                Ahmedabad, IN // Senior Android Engineer
+              </p>
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 };
