@@ -134,3 +134,11 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Progressive enhancement: ensure full visibility if scripting is disabled or fails */
+@media (scripting: none) {
+  .opacity-0 {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
