@@ -38,7 +38,7 @@ export const engineeringStages: EngineeringStage[] = [
     ],
     deliverable: "Protocol Specification & Hardware State Matrix",
     layerKey: "ingress",
-    layerLabel: "01 // HARDWARE_INGRESS",
+    layerLabel: "01 · Hardware Ingress Layer",
     relatedCaseStudy: {
       title: "NUConnect BLE Platform",
       href: "/projects/nuconnect",
@@ -58,7 +58,7 @@ export const engineeringStages: EngineeringStage[] = [
     ],
     deliverable: "Deterministic State Machine & Queue Hierarchy",
     layerKey: "control",
-    layerLabel: "02 // QUEUE_STATE_CONTROL",
+    layerLabel: "02 · Queue & State Layer",
     relatedCaseStudy: {
       title: "WeHear Translation Pipeline",
       href: "/projects/wehearapp",
@@ -78,7 +78,7 @@ export const engineeringStages: EngineeringStage[] = [
     ],
     deliverable: "Zero-Leak Production Binary & Clean Architecture",
     layerKey: "execution",
-    layerLabel: "03 // CONCURRENCY_UI_EXECUTION",
+    layerLabel: "03 · Concurrency & UI Layer",
     relatedCaseStudy: {
       title: "Styledrobe On-Device ML",
       href: "/apps/styledrobe",
@@ -88,7 +88,7 @@ export const engineeringStages: EngineeringStage[] = [
     id: "measure",
     step: "04",
     name: "Measure",
-    tagline: "Empirical Benchmarks & Telemetry Verification",
+    tagline: "Empirical Benchmarks & Verification",
     summary:
       "Validate performance, latency, and resource constraints against objective benchmarks under real-world device conditions.",
     focusAreas: [
@@ -96,9 +96,9 @@ export const engineeringStages: EngineeringStage[] = [
       "LeakCanary and Android Studio Memory Profiler heap dump verification",
       "Automated unit and integration test suites for simulated hardware states",
     ],
-    deliverable: "Macrobenchmark Telemetry & Verification Matrix",
+    deliverable: "Macrobenchmark Verification Matrix",
     layerKey: "telemetry",
-    layerLabel: "04 // TELEMETRY_BENCHMARK",
+    layerLabel: "04 · Performance Verification",
     relatedCaseStudy: {
       title: "Tinni-X Audio Synthesis",
       href: "/projects/tinnix",

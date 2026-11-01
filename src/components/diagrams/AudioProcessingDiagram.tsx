@@ -68,7 +68,7 @@ export const AudioProcessingDiagram: React.FC<DiagramProps> = ({ className }) =>
 
         {/* CONNECTION 1 */}
         <path d="M 210 180 L 260 180" className="animate-data-flow" stroke="#c0c0c0" strokeWidth="1.5" />
-        <circle cx="260" cy="180" r="3.5" fill="#e10600" className="animate-pulse" />
+        <circle cx="260" cy="180" r="3.5" fill="#e10600" />
 
         {/* SECTION 2: AUDIO SYNTHESIS & ATNF NOTCH FILTER */}
         <g transform="translate(270, 40)">
@@ -128,7 +128,7 @@ export const AudioProcessingDiagram: React.FC<DiagramProps> = ({ className }) =>
 
         {/* CONNECTION 2 */}
         <path d="M 630 180 L 680 180" className="animate-data-flow" stroke="#c0c0c0" strokeWidth="1.5" />
-        <circle cx="680" cy="180" r="3.5" fill="#e10600" className="animate-pulse" />
+        <circle cx="680" cy="180" r="3.5" fill="#e10600" />
 
         {/* SECTION 3: ACOUSTIC OUTPUT & SAFETY */}
         <g transform="translate(700, 40)">

@@ -76,7 +76,7 @@ export const BleProtocolDiagram: React.FC<DiagramProps> = ({ className }) => {
 
         {/* CONNECTION ARROW 1 */}
         <path d="M 210 180 L 260 180" className="animate-data-flow" stroke="#c0c0c0" strokeWidth="1.5" />
-        <circle cx="260" cy="180" r="3.5" fill="#e10600" className="animate-pulse" />
+        <circle cx="260" cy="180" r="3.5" fill="#e10600" />
 
         {/* SECTION 2: UNIFIED BLE ABSTRACTION LAYER */}
         <g transform="translate(270, 40)">

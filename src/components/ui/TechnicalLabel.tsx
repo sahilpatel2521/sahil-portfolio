@@ -12,22 +12,22 @@ export const TechnicalLabel: React.FC<TechnicalLabelProps> = ({
   variant = "neutral",
   size = "sm",
   indicator = false,
-  pulse = false,
+  pulse: _pulse = false,
   className,
   children,
   ...props
 }) => {
   const variantClasses = {
-    neutral: "bg-charcoal text-silver border-border-subtle",
+    neutral: "bg-white/[0.04] text-silver border-white/[0.08]",
     signal: "bg-signal-red-muted text-primary border-signal-red-border",
-    outline: "bg-transparent text-silver-dark border-border-subtle hover:border-silver-dark",
-    success: "bg-emerald-950/40 text-emerald-300 border-emerald-900/50",
+    outline: "bg-transparent text-silver-dark border-white/[0.08] hover:border-white/[0.18]",
+    success: "bg-emerald-950/30 text-emerald-300 border-emerald-900/40",
   };
 
   const sizeClasses = {
-    xs: "text-[10px] px-1.5 py-0.5 tracking-wider gap-1",
-    sm: "text-xs px-2 py-1 tracking-wider gap-1.5",
-    md: "text-xs px-3 py-1.5 tracking-widest gap-2",
+    xs: "text-[11px] px-2 py-0.5 gap-1",
+    sm: "text-xs px-2.5 py-0.5 gap-1.5",
+    md: "text-xs px-3 py-1 gap-2",
   };
 
   const indicatorDotColor = {
@@ -40,7 +40,7 @@ export const TechnicalLabel: React.FC<TechnicalLabelProps> = ({
   return (
     <span
       className={cn(
-        "inline-flex items-center font-mono font-medium uppercase border transition-colors select-none",
+        "inline-flex items-center font-mono font-medium rounded-full border transition-colors select-none",
         variantClasses[variant],
         sizeClasses[size],
         className
@@ -51,8 +51,7 @@ export const TechnicalLabel: React.FC<TechnicalLabelProps> = ({
         <span
           className={cn(
             "h-1.5 w-1.5 rounded-full shrink-0",
-            indicatorDotColor[variant],
-            pulse && variant === "signal" && "animate-pulse"
+            indicatorDotColor[variant]
           )}
           aria-hidden="true"
         />

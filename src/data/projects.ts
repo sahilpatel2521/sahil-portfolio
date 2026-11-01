@@ -4,7 +4,7 @@ export const projects: ProjectCaseStudy[] = [
   {
     id: "nuconnect",
     slug: "nuconnect",
-    systemCode: "SYS-01 // BLE_PLATFORM",
+    systemCode: "BLE Platform · Medical Devices",
     title: "NUConnect",
     subtitle: "Unified BLE Companion Platform for Smart Hearing Aids",
     category: "Medical & Wearable Systems",
@@ -118,7 +118,7 @@ export const projects: ProjectCaseStudy[] = [
   {
     id: "wehearapp",
     slug: "wehearapp",
-    systemCode: "SYS-02 // TRANSLATION_CORE",
+    systemCode: "Translation Core · Real-Time Audio",
     title: "WeHearApp & PairHub™",
     subtitle: "Real-Time Translation Platform & Multi-Device Wearables Engine",
     category: "Real-Time Audio & Embedded Wearables",
@@ -239,7 +239,7 @@ export const projects: ProjectCaseStudy[] = [
   {
     id: "nuscope",
     slug: "nuscope",
-    systemCode: "SYS-03 // UDP_STREAMING",
+    systemCode: "UDP Video Streaming · Medical Systems",
     title: "NUScope",
     subtitle: "Medical Otoscope & Real-Time UDP Video Communication Platform",
     category: "Medical Diagnostics & Video Streaming",
@@ -353,7 +353,7 @@ export const projects: ProjectCaseStudy[] = [
   {
     id: "tinnix",
     slug: "tinnix",
-    systemCode: "SYS-04 // AUDIO_PROCESSING",
+    systemCode: "Audio DSP · Hearing Diagnostics",
     title: "Tinni-X",
     subtitle: "Personalized Tinnitus Assessment, Therapy & Audio Processing",
     category: "Audio Engineering & Digital Health",

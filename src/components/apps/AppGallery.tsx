@@ -17,8 +17,6 @@ import {
   QrCode,
   Sparkles,
   Eye,
-  ShieldCheck,
-  Headphones,
 } from "lucide-react";
 
 export interface AppGalleryProps {
@@ -36,31 +34,24 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
       <Container size="wide">
         {!hideHeading && (
           <SectionHeading
-            systemCode="// 02. RELEASED APPLICATIONS & PRODUCTS"
-            title="Released Applications Gallery"
-            subtitle="Direct-to-consumer, accessibility, and hardware companion Android applications engineered with clean architecture, on-device AI, and hardware telemetry."
+            systemCode="03 · Released Applications"
+            title="Released Applications & Products"
+            subtitle="Direct-to-consumer, accessibility, and hardware companion Android applications engineered with clean architecture, on-device AI, and low-latency communication."
             badge={
               <TechnicalLabel variant="neutral" size="sm" indicator>
-                Active Products
+                4 Products
               </TechnicalLabel>
             }
           />
         )}
 
         {/* Varied Editorial Layout: Alternating Flagship Showcases + Dual Secondary Matrix */}
-        <div className="space-y-12 sm:space-y-16">
+        <div className="space-y-10 sm:space-y-12">
           {/* ============================================================== */}
           {/* FLAGSHIP 1: STYLEDROBE (On-Device Computer Vision & AI)        */}
-          {/* Layout: Phone on Left, Deep Technical Narrative on Right        */}
           {/* ============================================================== */}
           <MotionSection>
-            <div className="bg-bg-elevated border border-border-subtle p-6 sm:p-10 shadow-elevation relative overflow-hidden group">
-              {/* Top Industrial Accent Line */}
-              <div
-                className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-signal-red via-silver/30 to-transparent"
-                aria-hidden="true"
-              />
-
+            <div className="rounded-3xl bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.18] p-6 sm:p-10 shadow-spatial relative overflow-hidden group transition-all duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 {/* Left Column: Phone Mockup with Real Screenshot */}
                 <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
@@ -77,7 +68,7 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                 <div className="lg:col-span-7 space-y-6 order-1 lg:order-2">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="relative h-12 w-12 rounded-xl overflow-hidden border border-border-medium bg-charcoal shrink-0">
+                      <div className="relative h-12 w-12 rounded-xl overflow-hidden border border-white/[0.1] bg-[#1a1a1f] shrink-0">
                         <Image
                           src={styledrobe.iconUrl}
                           alt={`${styledrobe.name} official app icon`}
@@ -87,11 +78,9 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                         />
                       </div>
                       <div>
-                        <div className="flex items-center gap-2">
-                          <h3 className="font-display text-2xl sm:text-3xl font-bold text-primary">
-                            {styledrobe.name}
-                          </h3>
-                        </div>
+                        <h3 className="font-display text-2xl sm:text-3xl font-bold text-primary">
+                          {styledrobe.name}
+                        </h3>
                         <span className="font-mono text-xs text-silver-dark">
                           {styledrobe.category}
                         </span>
@@ -103,26 +92,26 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                     </TechnicalLabel>
                   </div>
 
-                  <p className="font-display text-base sm:text-lg text-silver font-light leading-relaxed">
+                  <p className="font-body text-base sm:text-lg text-silver font-normal leading-relaxed">
                     {styledrobe.tagline}
                   </p>
 
-                  <p className="font-body text-xs sm:text-sm text-muted leading-relaxed">
+                  <p className="font-body text-xs sm:text-sm text-silver-dark leading-relaxed">
                     {styledrobe.overview}
                   </p>
 
                   {/* Feature Highlights Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                     {styledrobe.features.slice(0, 2).map((feat, i) => (
-                      <div key={i} className="p-3 bg-charcoal/40 border border-border-subtle">
-                        <div className="font-mono text-[10px] text-signal-red font-bold uppercase mb-1 flex items-center gap-1.5">
+                      <div key={i} className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                        <div className="font-mono text-[11px] text-signal-red font-medium mb-1 flex items-center gap-1.5">
                           <Sparkles className="h-3 w-3 text-signal-red" />
-                          FEATURE // 0{i + 1}
+                          Feature 0{i + 1}
                         </div>
-                        <div className="font-display text-xs font-semibold text-silver">
+                        <div className="font-sans text-xs font-semibold text-silver">
                           {feat.title}
                         </div>
-                        <div className="font-body text-[11px] text-muted mt-1 leading-normal line-clamp-2">
+                        <div className="font-body text-[11px] text-silver-dark mt-1 leading-normal line-clamp-2">
                           {feat.description}
                         </div>
                       </div>
@@ -139,7 +128,7 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                   </div>
 
                   {/* Action Links */}
-                  <div className="pt-4 border-t border-border-subtle flex flex-wrap items-center gap-4">
+                  <div className="pt-4 border-t border-white/[0.06] flex flex-wrap items-center gap-3">
                     <PrimaryButton
                       href={`/apps/${styledrobe.slug}`}
                       variant="signal"
@@ -169,23 +158,15 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
 
           {/* ============================================================== */}
           {/* FLAGSHIP 2: ZBUKK (Hands-Free Eye-Blink Accessibility Platform) */}
-          {/* Layout: Alternating Asymmetry — Technical Narrative on Left,    */}
-          {/* Phone Mockup on Right (Elevated to equal flagship standing)    */}
           {/* ============================================================== */}
           <MotionSection delay={0.08}>
-            <div className="bg-bg-elevated border border-border-subtle p-6 sm:p-10 shadow-elevation relative overflow-hidden group">
-              {/* Top Industrial Accent Line */}
-              <div
-                className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-l from-signal-red via-silver/30 to-transparent"
-                aria-hidden="true"
-              />
-
+            <div className="rounded-3xl bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.18] p-6 sm:p-10 shadow-spatial relative overflow-hidden group transition-all duration-300">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 {/* Left Column: Editorial Information & Dual Store / GitHub CTAs */}
                 <div className="lg:col-span-7 space-y-6">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="relative h-12 w-12 rounded-xl overflow-hidden border border-border-medium bg-charcoal shrink-0">
+                      <div className="relative h-12 w-12 rounded-xl overflow-hidden border border-white/[0.1] bg-[#1a1a1f] shrink-0">
                         <Image
                           src={zbukk.iconUrl}
                           alt={`${zbukk.name} official app icon`}
@@ -195,11 +176,9 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                         />
                       </div>
                       <div>
-                        <div className="flex items-center gap-2">
-                          <h3 className="font-display text-2xl sm:text-3xl font-bold text-primary">
-                            {zbukk.name}
-                          </h3>
-                        </div>
+                        <h3 className="font-display text-2xl sm:text-3xl font-bold text-primary">
+                          {zbukk.name}
+                        </h3>
                         <span className="font-mono text-xs text-silver-dark">
                           {zbukk.category}
                         </span>
@@ -216,26 +195,26 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                     </div>
                   </div>
 
-                  <p className="font-display text-base sm:text-lg text-silver font-light leading-relaxed">
+                  <p className="font-body text-base sm:text-lg text-silver font-normal leading-relaxed">
                     {zbukk.tagline}
                   </p>
 
-                  <p className="font-body text-xs sm:text-sm text-muted leading-relaxed">
+                  <p className="font-body text-xs sm:text-sm text-silver-dark leading-relaxed">
                     {zbukk.overview}
                   </p>
 
                   {/* Feature Highlights Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                     {zbukk.features.slice(0, 2).map((feat, i) => (
-                      <div key={i} className="p-3 bg-charcoal/40 border border-border-subtle">
-                        <div className="font-mono text-[10px] text-signal-red font-bold uppercase mb-1 flex items-center gap-1.5">
+                      <div key={i} className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                        <div className="font-mono text-[11px] text-signal-red font-medium mb-1 flex items-center gap-1.5">
                           <Eye className="h-3 w-3 text-signal-red" />
-                          FEATURE // 0{i + 1}
+                          Feature 0{i + 1}
                         </div>
-                        <div className="font-display text-xs font-semibold text-silver">
+                        <div className="font-sans text-xs font-semibold text-silver">
                           {feat.title}
                         </div>
-                        <div className="font-body text-[11px] text-muted mt-1 leading-normal line-clamp-2">
+                        <div className="font-body text-[11px] text-silver-dark mt-1 leading-normal line-clamp-2">
                           {feat.description}
                         </div>
                       </div>
@@ -251,8 +230,8 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                     ))}
                   </div>
 
-                  {/* Action Links: Detail Specs + Google Play + GitHub */}
-                  <div className="pt-4 border-t border-border-subtle flex flex-wrap items-center gap-3">
+                  {/* Action Links */}
+                  <div className="pt-4 border-t border-white/[0.06] flex flex-wrap items-center gap-3">
                     <PrimaryButton
                       href={`/apps/${zbukk.slug}`}
                       variant="signal"
@@ -304,17 +283,16 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
           </MotionSection>
 
           {/* ============================================================== */}
-          {/* SECONDARY PRODUCTS MATRIX: WEHEAR & REACHME                     */}
-          {/* Layout: Balanced Dual-Column Technical Cards                   */}
+          {/* SECONDARY PRODUCTS: WEHEAR & REACHME                            */}
           {/* ============================================================== */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* CARD 1: WEHEAR WEARABLES COMPANION APP */}
             <MotionSection delay={0.12}>
-              <div className="bg-bg-elevated border border-border-subtle p-6 sm:p-8 flex flex-col justify-between shadow-elevation h-full group hover:border-silver/40 transition-colors">
+              <div className="rounded-3xl bg-white/[0.02] border border-white/[0.08] p-6 sm:p-8 flex flex-col justify-between shadow-spatial h-full group hover:border-white/[0.18] transition-all duration-300">
                 <div className="space-y-5">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="relative h-10 w-10 rounded-lg overflow-hidden border border-border-medium bg-charcoal shrink-0">
+                      <div className="relative h-10 w-10 rounded-xl overflow-hidden border border-white/[0.1] bg-[#1a1a1f] shrink-0">
                         <Image
                           src={wehear.iconUrl}
                           alt={`${wehear.name} app icon`}
@@ -327,7 +305,7 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                         <h3 className="font-display text-xl font-bold text-primary group-hover:text-silver transition-colors">
                           {wehear.name}
                         </h3>
-                        <span className="font-mono text-[10px] text-silver-dark">
+                        <span className="font-mono text-[11px] text-silver-dark">
                           {wehear.category}
                         </span>
                       </div>
@@ -338,7 +316,7 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                     </TechnicalLabel>
                   </div>
 
-                  <p className="font-display text-sm text-silver font-light">
+                  <p className="font-body text-sm text-silver font-normal">
                     {wehear.tagline}
                   </p>
 
@@ -351,7 +329,7 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                     />
                   </div>
 
-                  <p className="font-body text-xs text-muted leading-relaxed">
+                  <p className="font-body text-xs text-silver-dark leading-relaxed">
                     {wehear.overview}
                   </p>
 
@@ -364,12 +342,12 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                   </div>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-border-subtle flex flex-wrap items-center justify-between gap-3">
+                <div className="pt-6 mt-6 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3">
                   <Link
                     href={`/apps/${wehear.slug}`}
-                    className="font-mono text-xs uppercase tracking-wider text-silver hover:text-primary transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-signal-red"
+                    className="font-sans text-xs font-medium text-silver hover:text-primary transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-signal-red"
                   >
-                    <span>Product Specs</span>
+                    <span>Product Specifications</span>
                     <ArrowRight className="h-3 w-3 text-signal-red" />
                   </Link>
 
@@ -378,7 +356,7 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                       href={wehear.externalLinks[0].url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 bg-charcoal border border-border-subtle hover:border-silver text-silver hover:text-primary text-xs font-mono flex items-center gap-1.5 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-signal-red"
+                      className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] hover:border-white/[0.2] text-silver hover:text-primary text-xs font-sans flex items-center gap-1.5 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-signal-red"
                       title="View on Google Play Store"
                     >
                       <span>Google Play</span>
@@ -389,20 +367,20 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
               </div>
             </MotionSection>
 
-            {/* CARD 2: REACHME VEHICLE CONTACT SYSTEM (R&D PROTOTYPE) */}
+            {/* CARD 2: REACHME VEHICLE CONTACT SYSTEM */}
             <MotionSection delay={0.16}>
-              <div className="bg-bg-elevated border border-border-subtle p-6 sm:p-8 flex flex-col justify-between shadow-elevation h-full group hover:border-silver/40 transition-colors">
+              <div className="rounded-3xl bg-white/[0.02] border border-white/[0.08] p-6 sm:p-8 flex flex-col justify-between shadow-spatial h-full group hover:border-white/[0.18] transition-all duration-300">
                 <div className="space-y-5">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-lg bg-charcoal border border-border-medium flex items-center justify-center text-signal-red shrink-0">
+                      <div className="h-10 w-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-signal-red shrink-0">
                         <QrCode className="h-5 w-5" />
                       </div>
                       <div>
                         <h3 className="font-display text-xl font-bold text-primary group-hover:text-silver transition-colors">
                           {reachme.name}
                         </h3>
-                        <span className="font-mono text-[10px] text-silver-dark">
+                        <span className="font-mono text-[11px] text-silver-dark">
                           {reachme.category}
                         </span>
                       </div>
@@ -413,7 +391,7 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                     </TechnicalLabel>
                   </div>
 
-                  <p className="font-display text-sm text-silver font-light">
+                  <p className="font-body text-sm text-silver font-normal">
                     {reachme.tagline}
                   </p>
 
@@ -425,7 +403,7 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                     />
                   </div>
 
-                  <p className="font-body text-xs text-muted leading-relaxed">
+                  <p className="font-body text-xs text-silver-dark leading-relaxed">
                     {reachme.overview}
                   </p>
 
@@ -438,17 +416,17 @@ export const AppGallery: React.FC<AppGalleryProps> = ({ hideHeading = false }) =
                   </div>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-border-subtle flex flex-wrap items-center justify-between gap-3">
+                <div className="pt-6 mt-6 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3">
                   <Link
                     href={`/apps/${reachme.slug}`}
-                    className="font-mono text-xs uppercase tracking-wider text-silver hover:text-primary transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-signal-red"
+                    className="font-sans text-xs font-medium text-silver hover:text-primary transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-signal-red"
                   >
                     <span>Architecture Breakdown</span>
                     <ArrowRight className="h-3 w-3 text-signal-red" />
                   </Link>
 
-                  <span className="font-mono text-[11px] text-silver-dark uppercase tracking-wider">
-                    PROTOTYPE // PLAY STORE UNPUBLISHED
+                  <span className="font-mono text-[11px] text-silver-muted">
+                    R&amp;D Prototype · In Development
                   </span>
                 </div>
               </div>

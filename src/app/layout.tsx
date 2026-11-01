@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import "@/styles/globals.css";
 
-const displayFont = Space_Grotesk({
+const displayFont = Inter({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
@@ -25,11 +25,11 @@ const monoFont = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://sahilpatel.dev"),
   title: {
-    default: "SIGNAL / SYSTEM — Sahil Patel | Senior Android Engineer",
+    default: "Sahil Patel — Senior Android Engineer",
     template: "%s | Sahil Patel",
   },
   description:
-    "Engineering portfolio and released-app showcase of Sahil Patel, Senior Android Engineer specializing in BLE architecture, low-latency audio/video streaming, and Jetpack Compose.",
+    "Engineering portfolio and released applications of Sahil Patel, Senior Android Engineer specializing in BLE architecture, low-latency audio/video pipelines, and Jetpack Compose.",
   keywords: [
     "Sahil Patel",
     "Senior Android Engineer",
@@ -46,17 +46,17 @@ export const metadata: Metadata = {
   authors: [{ name: "Sahil Patel", url: "https://github.com/sahilpatel2521" }],
   creator: "Sahil Patel",
   openGraph: {
-    title: "SIGNAL / SYSTEM — Sahil Patel | Senior Android Engineer",
+    title: "Sahil Patel — Senior Android Engineer",
     description:
-      "Architecting deterministic Android platforms, custom BLE communication protocols, low-latency audio/video pipelines, and on-device ML.",
+      "Architecting reliable Android platforms, custom BLE communication protocols, low-latency audio/video pipelines, and on-device ML.",
     url: "https://sahilpatel.dev",
-    siteName: "SIGNAL / SYSTEM",
+    siteName: "Sahil Patel Portfolio",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SIGNAL / SYSTEM — Sahil Patel | Senior Android Engineer",
+    title: "Sahil Patel — Senior Android Engineer",
     description:
       "Senior Android Engineer specializing in BLE GATT architectures, real-time audio/video streaming, and Jetpack Compose.",
     creator: "@sahilpatel2521",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#171717",
+  themeColor: "#121214",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -94,9 +94,9 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-bg-deep text-primary font-body antialiased selection:bg-signal-red-muted selection:text-primary">
         <div className="relative flex min-h-screen flex-col overflow-x-hidden">
-          {/* Subtle background grid pattern */}
+          {/* Subtle ambient spatial light */}
           <div
-            className="pointer-events-none fixed inset-0 z-0 engineering-grid opacity-40"
+            className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(192,192,192,0.05),transparent)]"
             aria-hidden="true"
           />
 

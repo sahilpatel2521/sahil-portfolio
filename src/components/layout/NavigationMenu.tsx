@@ -70,7 +70,6 @@ export const NavigationMenu: React.FC = () => {
   useEffect(() => {
     if (!isOpen) return;
 
-    // Focus first focusable item in drawer
     const focusables = drawerRef.current?.querySelectorAll<HTMLElement>(
       'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
     );
@@ -129,7 +128,7 @@ export const NavigationMenu: React.FC = () => {
         className="hidden lg:flex items-center gap-6"
         aria-label="Main Navigation"
       >
-        <ul className="flex items-center gap-5">
+        <ul className="flex items-center gap-6">
           {navItems.map((item) => {
             const isActive =
               pathname === item.href || (pathname === "/" && activeSection === item.href);
@@ -138,19 +137,19 @@ export const NavigationMenu: React.FC = () => {
                 <Link
                   href={item.href}
                   className={cn(
-                    "group relative font-mono text-xs uppercase tracking-wider py-1.5 transition-colors duration-150 inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-signal-red",
+                    "group relative font-sans text-xs font-medium py-1.5 transition-colors duration-150 inline-flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-signal-red rounded",
                     isActive
                       ? "text-primary font-semibold"
                       : "text-silver hover:text-primary"
                   )}
                 >
-                  <span className="text-[10px] text-silver-dark group-hover:text-signal-red transition-colors">
+                  <span className="text-[10px] text-silver-muted group-hover:text-silver transition-colors">
                     {item.code}
                   </span>
                   <span>{item.label}</span>
                   {isActive && (
                     <span
-                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-signal-red"
+                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-signal-red rounded-full"
                       aria-hidden="true"
                     />
                   )}
@@ -161,7 +160,7 @@ export const NavigationMenu: React.FC = () => {
         </ul>
 
         {/* Quick CTA */}
-        <div className="pl-4 border-l border-border-subtle flex items-center gap-3">
+        <div className="pl-5 border-l border-white/[0.08] flex items-center gap-3">
           <PrimaryButton
             href="/assets/Sahil_Patel_Senior_Android_Engineer_Resume.pdf"
             external
@@ -180,7 +179,7 @@ export const NavigationMenu: React.FC = () => {
           ref={toggleButtonRef}
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="p-2 text-silver hover:text-primary bg-charcoal border border-border-subtle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-red"
+          className="p-2 text-silver hover:text-primary bg-white/[0.04] border border-white/[0.08] rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-red"
           aria-expanded={isOpen}
           aria-controls="mobile-navigation"
           aria-label={isOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
@@ -189,7 +188,7 @@ export const NavigationMenu: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Drawer Overlay via Portal to break out of containing blocks */}
+      {/* Mobile Drawer Overlay via Portal */}
       {mounted &&
         isOpen &&
         createPortal(
@@ -199,14 +198,14 @@ export const NavigationMenu: React.FC = () => {
             role="dialog"
             aria-modal="true"
             aria-label="Mobile Navigation"
-            className="fixed inset-x-0 bottom-0 top-16 z-50 bg-[#171717] border-t border-border-subtle p-6 flex flex-col justify-between md:hidden overflow-y-auto"
+            className="fixed inset-x-0 bottom-0 top-16 z-50 bg-[#0f0f11]/95 backdrop-blur-2xl border-t border-white/[0.08] p-6 flex flex-col justify-between md:hidden overflow-y-auto"
           >
             <div className="space-y-6">
-              <div className="font-mono text-xs uppercase text-silver-dark tracking-widest pb-3 border-b border-border-subtle flex items-center justify-between">
-                <span>System Navigation</span>
-                <span className="flex items-center gap-1.5 text-signal-red">
-                  <span className="h-1.5 w-1.5 rounded-full bg-signal-red animate-pulse" />
-                  ONLINE
+              <div className="font-mono text-xs text-silver-dark tracking-wider pb-3 border-b border-white/[0.08] flex items-center justify-between">
+                <span>Navigation</span>
+                <span className="flex items-center gap-1.5 text-xs text-emerald-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  Available for roles
                 </span>
               </div>
 
@@ -216,22 +215,22 @@ export const NavigationMenu: React.FC = () => {
                     <Link
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center justify-between py-2 text-base font-display text-primary hover:text-silver border-b border-border-subtle"
+                      className="flex items-center justify-between py-2 text-base font-sans font-medium text-primary hover:text-silver border-b border-white/[0.05]"
                     >
                       <span className="flex items-center gap-3">
-                        <span className="font-mono text-xs text-signal-red">
-                          {"//"}{item.code}
+                        <span className="font-mono text-xs text-silver-dark">
+                          {item.code}
                         </span>
                         <span>{item.label}</span>
                       </span>
-                      <span className="font-mono text-xs text-silver-dark">→</span>
+                      <span className="text-silver-dark">→</span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="pt-6 border-t border-border-subtle space-y-3">
+            <div className="pt-6 border-t border-white/[0.08] space-y-3">
               <PrimaryButton
                 href="/assets/Sahil_Patel_Senior_Android_Engineer_Resume.pdf"
                 external
@@ -240,10 +239,10 @@ export const NavigationMenu: React.FC = () => {
                 signalDot
                 className="w-full"
               >
-                Download Verified Resume (PDF)
+                Download Resume (PDF)
               </PrimaryButton>
-              <p className="font-mono text-[10px] text-center text-silver-dark uppercase tracking-wider">
-                Ahmedabad, IN // Senior Android Engineer
+              <p className="font-mono text-[11px] text-center text-silver-muted tracking-wide">
+                Ahmedabad, India · Senior Android Engineer
               </p>
             </div>
           </div>,

@@ -45,32 +45,19 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-display)", "'Space Grotesk'", "sans-serif"],
-        body: ["var(--font-body)", "'Inter'", "sans-serif"],
+        display: ["var(--font-display)", "'Inter'", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "'Inter'", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "'JetBrains Mono'", "monospace"],
       },
       boxShadow: {
-        elevation: "0 4px 20px -2px rgba(0, 0, 0, 0.7)",
-        "elevation-lg": "0 10px 30px -5px rgba(0, 0, 0, 0.8)",
+        elevation: "0 4px 24px -2px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-subtle)",
+        "elevation-lg": "0 12px 36px -4px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-medium)",
         "signal-subtle": "0 0 12px -2px rgba(225, 6, 0, 0.35)",
+        spatial: "0 20px 50px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08)",
       },
       letterSpacing: {
-        technical: "0.12em",
-        display: "-0.03em",
-      },
-      keyframes: {
-        "spin-slow": {
-          "0%": { transform: "rotateX(68deg) rotateY(-18deg) rotateZ(0deg)" },
-          "100%": { transform: "rotateX(68deg) rotateY(-18deg) rotateZ(360deg)" },
-        },
-        "spin-reverse-medium": {
-          "0%": { transform: "rotateX(42deg) rotateY(38deg) rotateZ(0deg)" },
-          "100%": { transform: "rotateX(42deg) rotateY(38deg) rotateZ(-360deg)" },
-        },
-      },
-      animation: {
-        "spin-slow": "spin-slow 48s linear infinite",
-        "spin-reverse-medium": "spin-reverse-medium 36s linear infinite",
+        technical: "0.08em",
+        display: "-0.025em",
       },
     },
   },

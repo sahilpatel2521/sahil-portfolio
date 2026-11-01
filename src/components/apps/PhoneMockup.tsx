@@ -46,7 +46,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
       <div className="relative w-full h-full rounded-[28px] bg-bg-deep overflow-hidden border border-black/90 flex flex-col justify-between">
         {/* Dynamic Island / Speaker Pill */}
         <div className="absolute top-2 left-1/2 -translate-x-1/2 z-30 h-4 w-20 bg-black rounded-full flex items-center justify-end px-2 border border-white/5">
-          <div className="h-1.5 w-1.5 rounded-full bg-signal-red/90 animate-pulse" />
+          <div className="h-2 w-2 rounded-full bg-neutral-800 border border-neutral-700/60" />
         </div>
 
         {/* Top Status Bar */}

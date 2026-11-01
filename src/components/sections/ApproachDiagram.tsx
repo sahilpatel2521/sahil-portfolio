@@ -89,26 +89,23 @@ export const ApproachDiagram: React.FC<ApproachDiagramProps> = ({
   return (
     <div
       className={cn(
-        "bg-bg-elevated border border-border-subtle p-4 sm:p-6 shadow-elevation relative overflow-hidden",
+        "rounded-2xl bg-[#141418] border border-white/[0.08] p-4 sm:p-6 shadow-spatial relative overflow-hidden",
         className
       )}
     >
-      {/* Schematic Header Bar */}
-      <div className="flex items-center justify-between pb-4 mb-4 border-b border-border-subtle font-mono text-[11px] text-silver-dark tracking-wider">
+      {/* Header Bar */}
+      <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/[0.06] font-mono text-xs text-silver-dark tracking-wide">
         <div className="flex items-center gap-2">
           <span
-            className={cn(
-              "h-2 w-2 rounded-full",
-              shouldReduceMotion ? "bg-signal-red" : "bg-signal-red animate-pulse"
-            )}
+            className="h-2 w-2 rounded-full bg-signal-red"
             aria-hidden="true"
           />
-          <span className="text-silver uppercase">
-            SCHEMATIC: DETERMINISTIC_PIPELINE_V3
+          <span className="text-silver font-medium">
+            Architecture Pipeline Schematic
           </span>
         </div>
-        <span className="hidden sm:inline-block uppercase text-[10px] text-silver-muted">
-          CLICK_NODE_TO_INSPECT
+        <span className="hidden sm:inline-block text-[11px] text-silver-muted">
+          Click node to inspect stage
         </span>
       </div>
 

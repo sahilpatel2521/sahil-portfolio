@@ -7,26 +7,26 @@ import { PrimaryButton } from "@/components/ui/PrimaryButton";
 import { TechnicalLabel } from "@/components/ui/TechnicalLabel";
 
 const lineVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 16 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.12,
-      duration: 0.6,
+      delay: i * 0.1,
+      duration: 0.5,
       ease: [0.16, 1, 0.3, 1] as const,
     },
   }),
 };
 
 const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 12 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 0.45,
-      duration: 0.5,
+      delay: 0.35,
+      duration: 0.45,
       ease: [0.16, 1, 0.3, 1] as const,
     },
   },
@@ -41,14 +41,14 @@ export const HeroHeadline: React.FC = () => {
   }, []);
 
   const headlineLines = [
-    "SOFTWARE THAT",
-    "CONNECTS TO THE",
-    "REAL WORLD.",
+    "Software that connects",
+    "mobile platforms to",
+    "the physical world.",
   ];
 
   return (
-    <div className="space-y-6 sm:space-y-8 max-w-3xl">
-      {/* Small Technical Label */}
+    <div className="space-y-6 sm:space-y-7 max-w-3xl">
+      {/* Small Technical Category Pill */}
       <motion.div
         custom={0}
         initial={mounted && !shouldReduceMotion ? "hidden" : "visible"}
@@ -56,13 +56,14 @@ export const HeroHeadline: React.FC = () => {
         variants={lineVariants}
         className="flex items-center gap-2"
       >
-        <TechnicalLabel variant="neutral" size="sm" indicator pulse>
-          ANDROID / CONNECTED SYSTEMS / AUDIO / AI
-        </TechnicalLabel>
+        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-silver">
+          <span className="h-1.5 w-1.5 rounded-full bg-signal-red" aria-hidden="true" />
+          Android · Connected Devices · Audio &amp; DSP · AI
+        </span>
       </motion.div>
 
-      {/* Main Headline (Real HTML H1 with Staggered Lines) */}
-      <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-primary leading-[1.04]">
+      {/* Main Headline (Real HTML H1 with Clean Typography) */}
+      <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-[1.08]">
         {headlineLines.map((line, index) => (
           <span key={line} className="block overflow-hidden">
             <motion.span
@@ -71,7 +72,7 @@ export const HeroHeadline: React.FC = () => {
               animate="visible"
               variants={lineVariants}
               className={`block ${
-                index === 2 ? "text-silver group-hover:text-white transition-colors" : ""
+                index === 2 ? "text-silver" : ""
               }`}
             >
               {line}
@@ -85,12 +86,12 @@ export const HeroHeadline: React.FC = () => {
         initial={mounted && !shouldReduceMotion ? "hidden" : "visible"}
         animate="visible"
         variants={fadeUpVariants}
-        className="font-body text-base sm:text-lg lg:text-xl text-silver-dark font-light max-w-2xl leading-relaxed"
+        className="font-body text-base sm:text-lg text-silver-dark font-normal max-w-2xl leading-relaxed"
       >
-        I build Android experiences across connected devices, real-time systems, audio, and on-device AI.
+        I am a Senior Android Engineer building reliable mobile software that interfaces with smart hearing aids, Bluetooth peripherals, real-time audio streams, and on-device intelligent systems.
       </motion.p>
 
-      {/* Architectural Focus Thesis */}
+      {/* Focus Summary */}
       <motion.p
         initial={mounted && !shouldReduceMotion ? "hidden" : "visible"}
         animate="visible"
@@ -107,7 +108,6 @@ export const HeroHeadline: React.FC = () => {
         variants={fadeUpVariants}
         className="pt-2 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4"
       >
-        {/* Primary CTA */}
         <PrimaryButton
           href="#systems"
           variant="signal"
@@ -116,10 +116,9 @@ export const HeroHeadline: React.FC = () => {
           className="w-full sm:w-auto"
           icon={<ArrowRight className="h-4 w-4" />}
         >
-          Explore projects
+          Explore Projects
         </PrimaryButton>
 
-        {/* Secondary CTA */}
         <PrimaryButton
           href="#apps"
           variant="primary"
@@ -127,10 +126,9 @@ export const HeroHeadline: React.FC = () => {
           className="w-full sm:w-auto"
           icon={<Smartphone className="h-4 w-4 text-silver" />}
         >
-          View released apps
+          View Released Apps
         </PrimaryButton>
 
-        {/* Clear Resume Access */}
         <PrimaryButton
           href="/assets/Sahil_Patel_Senior_Android_Engineer_Resume.pdf"
           external

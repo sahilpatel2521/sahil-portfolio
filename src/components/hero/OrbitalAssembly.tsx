@@ -1,13 +1,19 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Bluetooth, Cpu, Layers, Sparkles, CheckCircle2 } from "lucide-react";
 
 export interface OrbitalAssemblyProps {
   className?: string;
 }
 
+/**
+ * DeveloperSpatialCanvas (formerly OrbitalAssembly):
+ * Spatial minimalism developer showcase presenting live Kotlin BLE architecture,
+ * real-time hardware telemetry, and Jetpack Compose state in a floating spatial glass surface.
+ */
 export const OrbitalAssembly: React.FC<OrbitalAssemblyProps> = ({ className }) => {
   const shouldReduceMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);
@@ -17,7 +23,6 @@ export const OrbitalAssembly: React.FC<OrbitalAssemblyProps> = ({ className }) =
   useEffect(() => {
     setMounted(true);
 
-    // Only attach mouse tracking on non-touch devices with fine pointers
     const mediaQuery = window.matchMedia("(pointer: fine)");
     if (!mediaQuery.matches) return;
 
@@ -26,10 +31,9 @@ export const OrbitalAssembly: React.FC<OrbitalAssemblyProps> = ({ className }) =
       const rect = containerRef.current.getBoundingClientRect();
       const x = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
       const y = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-      // Subtle clamping to prevent exaggerated motion
       setMousePos({
-        x: Math.max(-1, Math.min(1, x)) * 12,
-        y: Math.max(-1, Math.min(1, y)) * 12,
+        x: Math.max(-1, Math.min(1, x)) * 8,
+        y: Math.max(-1, Math.min(1, y)) * 8,
       });
     };
 
@@ -41,166 +45,105 @@ export const OrbitalAssembly: React.FC<OrbitalAssemblyProps> = ({ className }) =
     <div
       ref={containerRef}
       className={cn(
-        "relative flex items-center justify-center select-none pointer-events-none",
-        "w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px]",
+        "relative flex items-center justify-center select-none w-full max-w-[460px] mx-auto",
         className
       )}
-      style={{ perspective: "1000px" }}
+      style={{ perspective: "1200px" }}
       aria-hidden="true"
     >
-      {/* Background Soft Ambient Sheen (Deep Charcoal / Silver diffuse) */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-charcoal/40 via-transparent to-silver/5 blur-3xl opacity-60" />
+      {/* Ambient Spatial Glow */}
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-charcoal/30 via-silver/5 to-transparent blur-2xl opacity-60 pointer-events-none" />
 
-      {/* 3D Parallax Wrapper */}
+      {/* Floating Spatial Card Container */}
       <div
-        className="relative w-full h-full flex items-center justify-center transition-transform duration-700 ease-out"
+        className="relative w-full rounded-2xl bg-[#141417]/95 border border-white/[0.09] shadow-spatial p-5 sm:p-6 transition-transform duration-500 ease-out"
         style={{
           transformStyle: "preserve-3d",
           transform:
             mounted && !shouldReduceMotion
-              ? `rotateX(${-mousePos.y * 0.8}deg) rotateY(${mousePos.x * 0.8}deg)`
+              ? `rotateX(${-mousePos.y * 0.6}deg) rotateY(${mousePos.x * 0.6}deg)`
               : "none",
         }}
       >
-        {/* ============================================================== */}
-        {/* RING 1: OUTER CALIBRATED GIMBAL (Slow Clockwise Rotation)       */}
-        {/* ============================================================== */}
-        <div
-          className={cn(
-            "absolute inset-0 rounded-full border border-silver/30",
-            mounted && !shouldReduceMotion && "animate-spin-slow"
-          )}
-          style={{
-            transformStyle: "preserve-3d",
-            transform: "rotateX(68deg) rotateY(-18deg)",
-            boxShadow: "0 0 25px -5px rgba(192, 192, 192, 0.08)",
-          }}
-        >
-          {/* Outer Ring Brushed Specular Highlights */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-silver/10 to-transparent" />
-
-          {/* Coordinate Hashes (North, South, East, West) */}
-          <span className="absolute -top-3 left-1/2 -translate-x-1/2 font-mono text-[8px] sm:text-[9px] text-silver-dark tracking-widest uppercase">
-            000°
-          </span>
-          <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 font-mono text-[8px] sm:text-[9px] text-silver-dark tracking-widest uppercase">
-            180°
-          </span>
-          <span className="absolute top-1/2 -left-4 -translate-y-1/2 font-mono text-[8px] sm:text-[9px] text-silver-dark tracking-widest uppercase">
-            270°
-          </span>
-          <span className="absolute top-1/2 -right-4 -translate-y-1/2 font-mono text-[8px] sm:text-[9px] text-silver-dark tracking-widest uppercase">
-            090°
-          </span>
-
-          {/* Precision tick markers around perimeter */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-silver/60" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-2 bg-silver/60" />
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-0.5 bg-silver/60" />
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-0.5 bg-silver/60" />
-        </div>
-
-        {/* ============================================================== */}
-        {/* RING 2: MIDDLE INCLINED GIMBAL (Counter-Clockwise Rotation)     */}
-        {/* ============================================================== */}
-        <div
-          className={cn(
-            "absolute w-[78%] h-[78%] rounded-full border border-silver/40",
-            mounted && !shouldReduceMotion && "animate-spin-reverse-medium"
-          )}
-          style={{
-            transformStyle: "preserve-3d",
-            transform: "rotateX(42deg) rotateY(38deg)",
-          }}
-        >
-          {/* Hairline double track */}
-          <div className="absolute inset-[3px] rounded-full border border-border-medium" />
-
-          {/* Signature Accent: Signal Red Alignment Laser Notch (Strictly 3-5%) */}
-          <div className="absolute -top-1 left-1/2 -translate-x-1/2 flex flex-col items-center">
-            <span className="h-2 w-0.5 bg-signal-red shadow-[0_0_8px_rgba(225,6,0,0.8)]" />
-            <span className="h-1 w-1 rounded-full bg-signal-red mt-0.5" />
+        {/* Card Window Header */}
+        <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/[0.06]">
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-white/[0.12]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-white/[0.12]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-white/[0.12]" />
+            <span className="ml-2 font-mono text-[11px] text-silver-dark font-medium">
+              BlePlatformEngine.kt
+            </span>
           </div>
 
-          {/* Opposite Silver Counter-Weight */}
-          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-silver/60" />
+          <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-[10px] font-mono text-silver">
+            <Bluetooth className="h-3 w-3 text-signal-red" />
+            <span>GATT · 24-bit/48kHz</span>
+          </div>
         </div>
 
-        {/* ============================================================== */}
-        {/* RING 3: INNER TELEMETRY RING (Vertical Tilt)                   */}
-        {/* ============================================================== */}
-        <div
-          className={cn(
-            "absolute w-[56%] h-[56%] rounded-full border border-silver/20",
-            mounted && !shouldReduceMotion && "animate-spin-slow"
-          )}
-          style={{
-            transformStyle: "preserve-3d",
-            transform: "rotateX(-35deg) rotateY(55deg)",
-          }}
-        >
-          {/* Subtle dotted orbital track */}
-          <div className="absolute inset-0 rounded-full border border-dashed border-silver-dark/30" />
+        {/* Realistic Kotlin Coroutines Architecture Code Block */}
+        <div className="font-mono text-[11px] sm:text-xs leading-relaxed space-y-1 text-silver-dark">
+          <p className="text-silver-muted">{"//"} Deterministic BLE Peripheral Pipeline</p>
+          <p>
+            <span className="text-purple-400 font-semibold">class</span>{" "}
+            <span className="text-primary font-semibold">AudioBridgeService</span>(
+          </p>
+          <p className="pl-4">
+            <span className="text-purple-400">private val</span> bleClient:{" "}
+            <span className="text-emerald-400">BleGattDispatcher</span>,
+          </p>
+          <p className="pl-4">
+            <span className="text-purple-400">private val</span> dspEngine:{" "}
+            <span className="text-emerald-400">AudioDspPipeline</span>
+          </p>
+          <p>) {"{"}</p>
+
+          <p className="pl-4 pt-1">
+            <span className="text-purple-400">fun</span>{" "}
+            <span className="text-blue-400">streamAudio</span>():{" "}
+            <span className="text-emerald-400">Flow</span>&lt;AudioFrame&gt; =
+          </p>
+          <p className="pl-8 text-silver">
+            bleClient.connectionState
+          </p>
+          <p className="pl-12">
+            .filterIsInstance&lt;<span className="text-emerald-400">Connected</span>&gt;()
+          </p>
+          <p className="pl-12">
+            .flatMapLatest {"{ session ->"}
+          </p>
+          <p className="pl-16 text-primary">
+            dspEngine.processSlidingWindow(session)
+          </p>
+          <p className="pl-12">{"}"}</p>
+          <p className="pl-12 text-silver-muted">
+            .flowOn(Dispatchers.Default)
+          </p>
+          <p>{"}"}</p>
         </div>
 
-        {/* ============================================================== */}
-        {/* CENTRAL SIGNATURE: METALLIC SILVER SPHERICAL CORE              */}
-        {/* ============================================================== */}
+        {/* Floating Spatial Telemetry Pill (Overlaid with 3D Depth) */}
         <div
-          className="relative w-[28%] h-[28%] rounded-full flex items-center justify-center transition-transform duration-500"
-          style={{
-            background:
-              "radial-gradient(circle at 32% 28%, #ffffff 0%, #dedede 15%, #b4b4b4 38%, #5a5a5a 68%, #222222 92%, #141414 100%)",
-            boxShadow:
-              "inset -4px -6px 12px rgba(0, 0, 0, 0.9), inset 3px 4px 8px rgba(255, 255, 255, 0.7), 0 16px 36px -4px rgba(0, 0, 0, 0.9), 0 0 20px rgba(192, 192, 192, 0.15)",
-          }}
+          className="mt-4 pt-3 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono"
+          style={{ transform: "translateZ(16px)" }}
         >
-          {/* Precision Equatorial Seam */}
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[1px] bg-charcoal/80" />
-
-          {/* Micro Telemetry Crosshair */}
-          <div className="relative w-4 h-4 flex items-center justify-center opacity-70">
-            <div className="absolute inset-x-0 h-[1px] bg-charcoal/90" />
-            <div className="absolute inset-y-0 w-[1px] bg-charcoal/90" />
-            {/* Center Signal Pulse Core */}
-            <div className="h-1.5 w-1.5 rounded-full bg-signal-red" />
+          <div className="flex items-center gap-2 text-silver">
+            <Cpu className="h-3.5 w-3.5 text-silver-dark" />
+            <span>Buffer: 18ms</span>
           </div>
 
-          {/* Specular Highlight Catch */}
-          <div className="absolute top-[18%] left-[24%] w-2 h-1 rounded-full bg-white/70 blur-[0.5px] rotate-[-25deg]" />
-        </div>
+          <div className="flex items-center gap-1.5 text-silver">
+            <span className="h-1.5 w-1.5 rounded-full bg-signal-red" />
+            <span>Dropped Packets: 0%</span>
+          </div>
 
-        {/* Satellite Horizon Reference Arc (Subtle Wireframe Depth) */}
-        <svg
-          className="absolute inset-0 w-full h-full opacity-20 pointer-events-none"
-          viewBox="0 0 100 100"
-          fill="none"
-          stroke="currentColor"
-        >
-          <circle
-            cx="50"
-            cy="50"
-            r="48"
-            stroke="var(--silver-dark)"
-            strokeWidth="0.3"
-            strokeDasharray="1 3"
-          />
-          <line
-            x1="0"
-            y1="50"
-            x2="100"
-            y2="50"
-            stroke="var(--silver-dark)"
-            strokeWidth="0.2"
-          />
-        </svg>
+          <div className="flex items-center gap-1 text-silver-dark">
+            <CheckCircle2 className="h-3 w-3 text-emerald-400" />
+            <span className="text-primary font-medium">Compose 1.7</span>
+          </div>
+        </div>
       </div>
-
-      {/* Embedded Ambient Lighting Ground Shadow */}
-      <div
-        className="absolute -bottom-8 w-[60%] h-6 rounded-full bg-black/60 blur-xl pointer-events-none"
-        aria-hidden="true"
-      />
     </div>
   );
 };

@@ -18,20 +18,20 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
 }) => {
   return (
     <div className={cn("mb-8 sm:mb-12", className)}>
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-2.5">
         {systemCode && (
-          <span className="font-mono text-xs uppercase tracking-widest text-silver-dark flex items-center gap-2">
-            <span className="h-1 w-1 bg-signal-red" aria-hidden="true" />
+          <span className="font-mono text-xs text-silver-dark font-medium flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-signal-red" aria-hidden="true" />
             {systemCode}
           </span>
         )}
         {badge && <div className="shrink-0">{badge}</div>}
       </div>
-      <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-primary">
+      <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-primary">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-2 text-sm sm:text-base text-muted max-w-2xl font-body leading-relaxed">
+        <p className="mt-2 text-sm sm:text-base text-silver-dark max-w-2xl font-body leading-relaxed">
           {subtitle}
         </p>
       )}
